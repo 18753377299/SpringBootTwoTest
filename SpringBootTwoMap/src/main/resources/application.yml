@@ -1,0 +1,28 @@
+server: 
+  port: 15030
+spring: 
+   jpa: 
+      hibernate:
+         #none防止执行的时候进行更新，update是继续更新，可以把驼峰命名的实体类以表的形式更新到数据库中
+         ddl-auto: none
+         naming: 
+            #驼峰命名会被自动转成数据库下划线命名，指定@Column的name也不起作用的问题的解决
+            implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl 
+      show-sql: true  
+      properties: 
+        hibernate: 
+          format_sql: true
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          temp: 
+            use_jdbc_metadata_defaults: false
+   type: com.alibaba.druid.pool.DruidDataSource
+   datasource: #\u6570\u636E\u6E90\u914D\u7F6E
+#      url: jdbc:postgresql://localhost:5432/platform_devdb
+#      url: jdbc:postgresql://localhost:5432/postgres
+      url: jdbc:postgresql://127.0.0.1:5432/postgres?currentSchema=sdx&useUnicode=true&characterEncoding=utf8
+      username: postgres
+      password: 123456
+      hikari:       
+        minimum-idle: 5 #\u6700\u5C0F\u7A7A\u95F2\u8FDE\u63A5\u6570\uFF0C\u9ED8\u8BA4\u548Cmaximum-pool-size\u503C\u4E00\u6837(\u6027\u80FD\u6D4B\u8BD5\u548C\u751F\u4EA7\u73AF\u5883\u65F6\u4E0D\u8981\u8BBE\u7F6E\uFF0C\u4FDD\u6301\u56FA\u5B9A\u8FDE\u63A5\u6C60)
+        maximum-pool-size: 150 # \u8FDE\u63A5\u6C60\u4E2D\u53EF\u540C\u65F6\u8FDE\u63A5\u7684\u6700\u5927\u8FDE\u63A5\u6570, \u5F53\u6C60\u4E2D\u6CA1\u6709\u7A7A\u95F2\u8FDE\u63A5\u53EF\u7528\u65F6,\u5C31\u4F1A\u963B\u585E\u76F4\u5230\u8D85\u51FAconnectionTimeout\u8BBE\u5B9A\u7684\u6570\u503C

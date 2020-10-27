@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>SpringBootTwoTest</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.example</groupId>
+  <artifactId>SpringBootTwoMap</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>SpringBootTwoMap</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <repositories>
+	     <!-- <repository>
+			<id>aliyun</id>
+			<name>Team 	Nexus Repository</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository> -->
+	    <repository>
+	      <id>ispeco</id>
+	      <url>http://maven.supermapol.com/</url>
+	    </repository>
+	    <repository>
+	      <id>supermap</id>
+	      <url>http://maven.supermap.io/</url>
+	    </repository>
+  </repositories>
+  
+  <dependencies>
+    
+    <!-- springBoot的启动器 -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+  	<!-- springBoot的启动器 -->
+      <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-jpa</artifactId>
+<!-- 		<version>2.0.12.RELEASE</version> -->
+	</dependency>
+	<!-- 数据库驱动 -->
+	<dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+	</dependency>
+	<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.47</version>
+	</dependency>
+	<!-- jdbcTemplate -->
+	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-jdbc</artifactId>
+	</dependency>
+	<!-- 好用的预编译工具lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+<!-- 			<scope>provided</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+<!-- 		    <groupId>org.apache.commons</groupId> -->
+		     <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+	
+	<!-- 超图中iobjectJava的包begin -->
+	<dependency>
+		  <groupId>com.supermap</groupId>
+		  <artifactId>com.supermap.data</artifactId>
+		  <version>9.0.0-15319</version>
+	 </dependency>
+	 <dependency>
+		  <groupId>com.supermap</groupId>
+		  <artifactId>com.supermap.mapping</artifactId>
+		  <version>9.0.0-15319</version>
+	 </dependency>
+	<!--  <dependency>
+	  <groupId>com.supermap.iserver</groupId>
+	  <artifactId>iserver-all</artifactId>
+	  <version>8.0.2</version>
+	</dependency> -->
+	<!-- <dependency>
+		  <groupId>com.supermap</groupId>
+		  <artifactId>com.supermap.conversion</artifactId>
+		  <version>9.0.0-15319</version>
+	 </dependency> -->
+	 <!-- 超图中iobjectJava的包end -->
+	 
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+  </dependencies>
+</project>
