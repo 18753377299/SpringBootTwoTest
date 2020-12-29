@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excels>
+	
+	<!-- <excel id="expert" class="com.picc.riskctrl.common.schema.RiskInfoExpert">
+		<field name="expertName" title="姓名"  isNull="false"/>
+		<field name="education" title="学历" isNull="false" format="01:本科以下,02:本科,03:硕士及硕士以上,99:未说明"/>
+		<field name="specialty" title="专业方向" isNull="true"/>
+		<field name="qualification" title="个人资质" isNull="true"/>
+		<field name="experience" title="工作经验" isNull="true"/>
+		<field name="riskName" title="查勘险类" isNull="false" isRiskName="true"/>
+		<field name="profession" title="查勘行业" isNull="false" dcode="true"/>
+		<field name="workSpecialty" title="工作专长" isNull="true"/>
+		<field name="projectExp" title="项目经验" isNull="true"/>
+		<field name="phoneNumber" title="联系电话" isNull="false" isPhone="true"/>
+		<field name="mailAddr" title="邮箱" isNull="false" isEmail="true"/>
+		<field name="ascName" title="所属机构" isNull="true" dcode="true"/>
+		<field name="ascNature" title="机构性质" isNull="false" dcode="true"/>
+		<field name="sender" title="推荐公司" isNull="true" dcode="true"/>	
+		<field name="url" title="专家照片" isNull="true"  isImage="true"/>
+	</excel> -->
+	
+	<!-- <excel id="map" class="com.picc.riskctrl.common.schema.RiskMapFloodAddress">
+		<field name="floodAddress" title="水淹地点"  isNull="false"/>
+		<field name="floodDepth" title="水淹深度"  isNumberFlag="true"  isNull="false" decimalNumber="2" />
+		<field name="floodDate" title="水淹时间" isNull="false" pattern="YYYY/MM/dd"/>
+		<field name="pointx_2000" title="经度"  isNumberFlag="true" isNull="false"/>
+		<field name="pointy_2000" title="纬度"  isNumberFlag="true" isNull="false"/>
+		<field name="operatorCode" title="操作人员代码" isNull="false" dcode="true"/>
+	</excel> -->
+	
+	
+	<!-- <excel id="typhoonBlack" class="com.picc.riskctrl.common.schema.RiskMapTyphoonBlack">
+		<field name="policyNo" title="保单号" isNull="false" regex="^[0-9A-Z]{22}" regexErrMsg="必须为22位字母或数字"></field>
+		<field name="insuredName" title="被保险人名称" isNull="true"></field>
+		<field name="branch" title="归属机构" isNull="true" regex="^[0-9]{8}" regexErrMsg="必须为8位数字"></field>
+		<field name="riskCode" title="险种" isNull="false" regex="^[A-Z]{3}" regexErrMsg="必须为3位字母"></field>
+		<field name="insuerdAddress" title="保险地址" isNull="true"></field>
+		<field name="insuredAmount" title="保险金额" regex="^\d+(\.\d+)?$" regexErrMsg="必须输入数字" decimalNumber="2" isNull="true"></field>
+		<field name="premiumsAmount" title="保费金额" regex="^\d+(\.\d+)?$" regexErrMsg="必须输入数字" decimalNumber="2" isNull="true"></field>
+		<field name="startDate" title="起保日期" isNull="false" pattern="YYYY-MM-dd"></field>
+		<field name="endDate" title="终保日期" isNull="false" pattern="YYYY-MM-dd"></field>
+		<field name="percentage" title="分保自留比例" isNull="false" isNumberFlag="true" decimalNumber="4"></field>
+		<field name="guarantee" title="联共保我方份额" isNull="false" isNumberFlag="true" decimalNumber="4"></field>
+		<field name="caseNo" title="立案号" isNull="false" regex="^[0-9A-Z]{22}" regexErrMsg="必须为22位字母或数字"></field>
+		<field name="dangerDate" title="出险日期" isNull="false" pattern="YYYY-MM-dd"></field>
+		<field name="dangerBecause" title="出险原因" isNull="true"></field>
+		<field name="dangerCode" title="巨灾代码" isNull="true" regex="^[0-9A-Z]{12}" regexErrMsg="必须为12位字母或数字"></field>
+		<field name="estimateAmount" title="估计赔款" regex="^\d+(\.\d+)?$" regexErrMsg="必须输入数字" decimalNumber="2" isNull="true"></field>
+		<field name="closeFlag" title="是否结案" isNull="true"></field>
+		<field name="closeDate" title="结案时间" isNull="true" pattern="YYYY-MM-dd"></field>
+		<field name="dangerAddress" title="出险地址" isNull="false"></field>
+		<field name="pointx_2000" title="经度（84坐标系）" isNumberFlag="true" isNull="false"></field>
+		<field name="pointy_2000" title="纬度（84坐标系）" isNumberFlag="true" isNull="false"></field>
+		<field name="riskModel" title="RiskModel" isNumberFlag="true" isNull="false"></field>
+	</excel> -->
+	<!-- 导入巡检报告信息 -->
+	<!-- <excel id="riskcheck" class="com.picc.riskctrl.common.schema.RiskCheckMainLog">
+		<field name="comCode" title="归属机构" isNull="false" regex="^[0-9a-zA-Z]{8}" regexErrMsg="必须为8位含字母或数字"/>
+		<field name="insuredType" title="被保险人类型"   isNull="true"  format="1:个人,2:团体"/>
+		<field name="insuredCode" title="被保险人代码"   isNull="true" regex="^[0-9]{16}" regexErrMsg="必须为16位数字"/>
+		<field name="insuredName" title="被保险人姓名/企业名称" isNull="true"/>
+		<field name="addressDetail" title="保险财产地址"  isNull="true"/>
+		<field name="proposalNo" title="投保单号"   isNull="false" regex="^[0-9A-Z]{22}" regexErrMsg="必须为22位字母或数字"/>
+		<field name="policyNo" title="保单号" isNull="false" regex="^[0-9A-Z]{22}"  regexErrMsg="必须为22位字母或数字"/>
+		<field name="riskCode" title="产品代码"  isNull="false" regex="^[A-Z]{3}"  regexErrMsg="必须为3位大写字母"/>
+		<field name="pointx_2000" title="地球坐标系经度"  isNumberFlag="true" isNull="false"/>
+		<field name="pointy_2000" title="地球坐标系纬度" isNumberFlag="true" isNull="false"/>
+		<field name="pointx_02" title="火星坐标系经度"  isNumberFlag="true" isNull="false"/>
+		<field name="pointy_02" title="火星坐标系纬度"  isNumberFlag="true"  isNull="false"/>
+		<field name="insertTimeForHis" title="插入时间" isNull="true" pattern="YYYY/MM/dd"/>
+		<field name="operateTimeForHis" title="更新时间" isNull="true" pattern="YYYY/MM/dd"/>
+	</excel> -->
+	
+
+	
+</excels>
