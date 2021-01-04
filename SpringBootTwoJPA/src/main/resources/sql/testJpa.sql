@@ -8,16 +8,15 @@
     );
     
  drop table if exists t_users; 
-    CREATE TABLE
-    t_users
+    CREATE TABLE t_users
     (
         name CHARACTER VARYING(20),
         age INTEGER,
         address CHARACTER VARYING(40),
         id INTEGER NOT NULL,
         roles_id INTEGER,
-        inserttimeforhis TIME(6) WITHOUT TIME ZONE,
-        operatetimeforhis TIME(6) WITHOUT TIME ZONE,
+        inserttimeforhis  TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        operatetimeforhis  TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT t_users_pkey PRIMARY KEY (id),
         CONSTRAINT tusers_fk1 FOREIGN KEY (roles_id) REFERENCES "t_roles" ("roleid")
     );

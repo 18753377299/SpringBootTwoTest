@@ -21,6 +21,7 @@ import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.criteria.*;
 import javax.transaction.Transactional;
@@ -31,8 +32,6 @@ import java.util.Optional;
 
 /**
  * 测试类
- *
- *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringBootTwoJpaApplication.class)
@@ -76,6 +75,7 @@ public class UsersRepositoryTest {
 		users.setAddress("上海市");
 		users.setAge(24);
 		users.setName("王五");
+		users.setId(89);
 		this.usersRepository.save(users);
 	}
 
@@ -128,10 +128,10 @@ public class UsersRepositoryTest {
 	 */
 	@Test
 	public void testQueryByNameUseSQL() {
-//		List<Users> list = this.usersRepositoryQueryAnnotation.queryByNameUseSQL("张三");
-//		for (Users users : list) {
-//			System.out.println(users);
-//		}
+		List<Users> list =usersRepositoryQueryAnnotation.queryByNameUseSQL("张三");
+		for (Users users : list) {
+			System.out.println(users);
+		}
 	}
 
 	/**
@@ -142,7 +142,8 @@ public class UsersRepositoryTest {
 	@Transactional 
 	@Rollback(false) //取消自动回滚
 	public void testUpdateUsersNameById() {
-//		this.usersRepositoryQueryAnnotation.updateUsersNameById("张三三", 1);
+		System.out.println("{}==============>");
+//		this.usersRepositoryQueryAnnotation.updateUsersNameById("张三", 91);
 	}
 	
 	/**
@@ -176,9 +177,20 @@ public class UsersRepositoryTest {
 	@Test
 	public void testCrudRepositoryFindOne() {
 //		Users users = this.usersRepositoryCrudRepository.findOne(4);
-		Optional<Users> optional = this.usersRepositoryCrudRepository.findById(4);
-		Users users =  optional.isPresent()?optional.get():null;
-		System.out.println(users);
+		try {
+			List<Users>  usersList = usersRepository.findAll();
+			if(!CollectionUtils.isEmpty(usersList)){
+				Integer id =  usersList.get(usersList.size()-1).getId();
+				Optional<Users> optional = this.usersRepositoryCrudRepository.findById(id);
+				Users users =  optional.isPresent()?optional.get():null;
+				users.setAddress("广东省");
+				usersRepository.save(users);
+				System.out.println(users);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	/**

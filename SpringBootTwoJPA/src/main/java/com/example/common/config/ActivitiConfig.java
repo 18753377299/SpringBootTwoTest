@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.example.common.activiti.IdGen;
 
-
+/**activity工作流配置*/
 @Configuration
 public class ActivitiConfig implements ProcessEngineConfigurationConfigurer {
 

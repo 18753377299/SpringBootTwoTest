@@ -1,0 +1,10 @@
+server:
+    port: 15041
+spring:
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: admin
+        password: 1234
+    application:
+        name:  SpringBootTwoRabbit

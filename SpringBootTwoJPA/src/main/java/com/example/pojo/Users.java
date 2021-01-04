@@ -1,36 +1,18 @@
 package com.example.pojo;
 
+import com.example.common.auditordata.BaseEntity;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 //@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 //@ToString(exclude={"roles"})
 @Entity
 @Table(name="t_users")
-@EntityListeners(AuditingEntityListener.class)
-public class Users implements Serializable{
+//@EntityListeners(AuditingEntityListener.class)
+public class Users extends BaseEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -50,19 +32,7 @@ public class Users implements Serializable{
 	
 	@Column(name="address")
 	private String address;
-	
-	
-	/**插入时间*/
-	@CreatedDate
-//	@Column(name = "INSERTTIMEFORHIS",insertable=false,updatable=false)
-	@Column(name = "INSERTTIMEFORHIS",updatable=false)
-	private Date insertTimeForHis;
-	/**更新时间*/
-	@LastModifiedDate
-//	@Column(name = "OPERATETIMEFORHIS",insertable=false)
-	@Column(name = "OPERATETIMEFORHIS")
-	private Date operateTimeForHis;
-	
+
 //	@JsonIgnore   //  设置@JsonIgnore,这个注解的意思是表示在序列化的时候，忽略这个属性
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="roles_id")
@@ -148,21 +118,7 @@ public class Users implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getInsertTimeForHis() {
-		return insertTimeForHis;
-	}
-	public void setInsertTimeForHis(Date insertTimeForHis) {
-		this.insertTimeForHis = insertTimeForHis;
-	}
-	
-	
-	public Date getOperateTimeForHis() {
-		return operateTimeForHis;
-	}
-	public void setOperateTimeForHis(Date operateTimeForHis) {
-		this.operateTimeForHis = operateTimeForHis;
-	}
-	
+
 	public Roles getRoles() {
 		return roles;
 	}
@@ -170,5 +126,5 @@ public class Users implements Serializable{
 	public void setRoles(Roles roles) {
 		this.roles = roles;
 	}
-	
+
 }

@@ -17,8 +17,8 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes= SpringBootTwoJpaApplication.class)
 public class ActivityTest {
-	
-	/** 
+
+	/**
      	* 发布流程 
      */  
     @Test  
@@ -109,7 +109,7 @@ public class ActivityTest {
         for (Task task : tasks) {  
             System.out.println("ID:"+task.getId()+",姓名:"+task.getName()+",接收人:"+task.getAssignee()+",开始时间:"+task.getCreateTime());  
         }  
-    } 
+    }
     
     @Test  
     public void startTask(){  

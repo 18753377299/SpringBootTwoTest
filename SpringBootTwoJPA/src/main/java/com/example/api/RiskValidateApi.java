@@ -1,35 +1,30 @@
 package com.example.api;
 
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ValidationException;
-import javax.validation.Validator;
-import javax.validation.constraints.Max;
-import javax.validation.groups.Default;
-
+import com.example.common.exception.customException.CustomException;
+import com.example.common.valid.group.GroupA;
+import com.example.common.valid.group.GroupB;
+import com.example.vo.RiskRequestVo;
+import io.swagger.annotations.ApiOperation;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.example.common.exception.customException.ApplicationException;
-import com.example.common.valid.group.GroupA;
-import com.example.common.valid.group.GroupB;
-import com.example.vo.RiskRequestVo;
-
-import io.swagger.annotations.ApiOperation;
+import javax.validation.ConstraintViolation;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
+import javax.validation.constraints.Max;
+import javax.validation.groups.Default;
+import java.util.Set;
 
 /*该类用于进行字段校验测试*/
 
 @RestController
 //@Validated
+@RequestMapping(value=" riskvalidate")
 public class RiskValidateApi {
 	@Autowired
     private Validator validator;
@@ -40,7 +35,7 @@ public class RiskValidateApi {
 		Assert.notNull(name,  "name_null 不能为空");
 		Assert.hasText(name, "name 不能为空");
 		if(name==""||name=="null"||name==null) {
-			throw new ApplicationException("name 不能为空");
+			throw new CustomException("name 不能为空");
 		}
 		Assert.hasLength(name, "name 不能为''");
         return "name: " + name + " ,age:" + age;
@@ -72,7 +67,7 @@ public class RiskValidateApi {
 	@PostMapping("/setUserTest")
     public String setUserTest(@RequestBody RiskRequestVo riskRequestVo) {
 //        Parent parent = riskRequestVo.getParent();
-//		throw new ApplicationException("这是系统自定义的异常");
+//		throw new CustomException("这是系统自定义的异常");
 	    validObject(riskRequestVo, validator, GroupB.class, Default.class);
         return "name: " + riskRequestVo.getName() + ", age:" + riskRequestVo.getAge();
     }

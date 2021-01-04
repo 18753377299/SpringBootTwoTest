@@ -62,5 +62,6 @@
 	<modules>
 	  	<module>SpringBootTwoMap</module>
 	  	<module>SpringBootTwoJPA</module>
+		<module>SpringBootTwoRabbit</module>
 	</modules>
 </project>

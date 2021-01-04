@@ -25,6 +25,7 @@ public class OneToManyFk {
 	
 	@Autowired
 	private TestTwoRepository testTwoRepository;
+
 	/**
 	 * 一对多关联关系的添加,使用@Data不能成功，自己添加get、set方法就可以成功
 	 */
