@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import java.util.Optional;
 
+/*审计*/
 @Slf4j
 @Component("auditorAware")
 public class AuditorAwareImpl  implements AuditorAware<String> {

@@ -1,5 +1,6 @@
 package com.example.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import lombok.Data;
 有的进行校验之后不分组，有可能是对所有分组进行校验*/
 
 @Data
-public class RiskRequestVo {
+public class RiskRequestVo implements Serializable {
 	 /*设置组就只能校验改组*/
 	 @NotBlank(message="姓名不能为空",groups= {GroupA.class})
 	 private String name;
@@ -44,5 +45,52 @@ public class RiskRequestVo {
 	 @NotEmpty(message="parents子级集合不能为空",groups= {GroupA.class,GroupB.class})
 	 @NotNull(groups= {GroupB.class}) 
 	 private List<Parent> parents;
-	 
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public Date getInsertTime() {
+		return insertTime;
+	}
+
+	public void setInsertTime(Date insertTime) {
+		this.insertTime = insertTime;
+	}
+
+	public Parent getParent() {
+		return parent;
+	}
+
+	public void setParent(Parent parent) {
+		this.parent = parent;
+	}
+
+	public List<Parent> getParents() {
+		return parents;
+	}
+
+	public void setParents(List<Parent> parents) {
+		this.parents = parents;
+	}
 }

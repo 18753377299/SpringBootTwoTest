@@ -1,8 +1,6 @@
 package com.example.common.mqconst;
 
 
-import org.springframework.amqp.core.TopicExchange;
-
 public class RabbbitMQConst {
 
     public static final  String HELLO="hello";

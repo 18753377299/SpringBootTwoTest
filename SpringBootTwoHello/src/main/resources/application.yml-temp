@@ -1,0 +1,6 @@
+server:
+  port: 8012 
+  
+hello:
+  msg: Hello World OK
+  msg2: heihei

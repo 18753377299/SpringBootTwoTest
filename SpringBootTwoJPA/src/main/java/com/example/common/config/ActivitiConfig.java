@@ -13,7 +13,7 @@ public class ActivitiConfig implements ProcessEngineConfigurationConfigurer {
 	@Override
 	public void configure(SpringProcessEngineConfiguration processEngineConfiguration) {
 		// TODO Auto-generated method stub
-		processEngineConfiguration.setIdGenerator(new IdGen());
+//		processEngineConfiguration.setIdGenerator(new IdGen());
 	}
 
 }

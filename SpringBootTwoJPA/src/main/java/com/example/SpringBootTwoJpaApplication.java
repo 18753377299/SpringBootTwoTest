@@ -3,9 +3,7 @@ package com.example;
 import org.activiti.spring.boot.SecurityAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 /*审计功能*/
 //@EnableJpaAuditing(auditorAwareRef = "auditorAware")
@@ -16,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 //////	,excludeFilters = @ComponentScan.Filter(type = FilterType.CUSTOM, classes = MyTypeFilter.class)
 ////)
 @SpringBootApplication(exclude={SecurityAutoConfiguration.class})
-@EnableAsync
+//@EnableAsync
 public class SpringBootTwoJpaApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootTwoJpaApplication.class, args);
