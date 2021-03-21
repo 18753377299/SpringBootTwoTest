@@ -10,7 +10,6 @@ import org.activiti.engine.history.HistoricVariableInstance;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -33,6 +32,7 @@ public class ActivitiUtils {
         return getProcessEngine().getRuntimeService();
     }
 
+
     @ApiOperation(value="获取TaskService类")
     public static TaskService getTaskService(){
         return getProcessEngine().getTaskService();
@@ -42,7 +42,12 @@ public class ActivitiUtils {
     public static HistoryService getHistoryService(){
         return getProcessEngine().getHistoryService();
     }
-     /**
+
+    @ApiOperation(value="获取IdentityService类")
+    public static IdentityService getIdentityService(){
+        return getProcessEngine().getIdentityService();
+    }
+    /**
       * 部署信息表：act_re_deployment
       * 流程设计模型部署表： act_re_model
       * 流程定义数据表： act_re_procdef

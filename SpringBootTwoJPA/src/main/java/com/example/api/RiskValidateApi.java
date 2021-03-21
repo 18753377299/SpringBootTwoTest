@@ -4,6 +4,7 @@ import com.example.common.exception.customException.CustomException;
 import com.example.common.valid.group.GroupA;
 import com.example.common.valid.group.GroupB;
 import com.example.vo.RiskRequestVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import java.util.Set;
 @RestController
 //@Validated
 @RequestMapping(value=" riskvalidate")
+@Api(value="用于springboot请求类的参数校验")
 public class RiskValidateApi {
 	@Autowired
     private Validator validator;
@@ -94,7 +96,6 @@ public class RiskValidateApi {
             for (ConstraintViolation violation: constraintViolationSet) {
                 sb.append(violation.getMessage());
             }
-
             throw new ValidationException(sb.toString());
         }
     }

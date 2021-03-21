@@ -72,5 +72,6 @@
 		<module>SpringBootTwoRedis</module>
 		<module>SpringBootTwoQuartz</module>
 		<module>SpringBootTwoHello</module>
+		<module>SpringBootTwoActivitiRest</module>
 	</modules>
 </project>

@@ -6,13 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.ValidationException;
 
+import com.example.common.exception.customException.CustomException;
+import com.example.common.exception.enumConst.EnumExcepConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.common.exception.ReturnInfo.ResultEntity;
 import com.example.vo.AjaxResult;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,8 +55,8 @@ public class GlobalExceptionHandler {
         }
 
         if (e instanceof NullPointerException) {
-            logger.error("代码00：" + e.getMessage(), e);
-            return AjaxResult.error("发生空指针异常："+ e.getMessage());
+            logger.error("代码："+ EnumExcepConst.NullConst.getCode()+ e.getMessage(), e);
+            return AjaxResult.error(EnumExcepConst.NullConst.getName()+ e.getMessage());
         } else if (e instanceof IllegalArgumentException) {
             logger.error("代码01：" + e.getMessage(), e);
             return AjaxResult.error("请求参数类型不匹配："+ e.getMessage());
@@ -75,9 +76,12 @@ public class GlobalExceptionHandler {
             logger.error("代码99：" + e.getMessage(), e);
             return AjaxResult.error("服务器代码发生异常,请联系管理员:"+ e.getMessage());
         }
-        
-        
     }
-	
-	
+
+    @ExceptionHandler(CustomException.class)
+    public AjaxResult handle(CustomException e) {
+        return AjaxResult.error(EnumExcepConst.CustomConst.getName()+":"+ e.getMessage());
+    }
+
+
 }

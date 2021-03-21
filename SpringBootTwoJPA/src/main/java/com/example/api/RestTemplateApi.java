@@ -5,6 +5,7 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.swagger.annotations.Api;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -22,6 +23,7 @@ import org.springframework.web.client.RestTemplate;
 import com.example.pojo.Test;
 
 @RestController
+@Api(value="用于RestTemplate方法的测试")
 public class RestTemplateApi {
 	
 	@Autowired
@@ -30,7 +32,7 @@ public class RestTemplateApi {
 	RestTemplate restTemplate;
 	
 	/*HttpCilent：使用示例*/
-	@RequestMapping("/testHttpClient")
+	@GetMapping("/testHttpClient")
     public Object getUser(String msg) throws IOException {
         CloseableHttpClient closeableHttpClient = HttpClients.createDefault();
         HttpGet get = new HttpGet("http://localhost:15021/test/hello");
@@ -39,18 +41,18 @@ public class RestTemplateApi {
     }
 	
 	/*RestTemplate：*/
-	@RequestMapping("/testRestTemplate")
+	@GetMapping("/testRestTemplate")
     public Object testRestTemplate() throws IOException {
 //		http://localhost:15021/test/queryUser
         ResponseEntity<Test> result= restTemplate.getForEntity("http://localhost:15021/test/hello",Test.class);
         return result.getBody();
     }
-	@RequestMapping("/sayhello")
+	@GetMapping("/sayhello")
 	public String sayHello() {
 	    ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://localhost:15021/test/helloTwo", String.class, "张三");
 	    return responseEntity.getBody();
 	}
-	@RequestMapping("/sayhello2")
+	@GetMapping("/sayhello2")
 	public String sayHello2() {
 	    Map<String, String> map = new HashMap<>();
 	    map.put("name", "李四");
@@ -58,14 +60,14 @@ public class RestTemplateApi {
 	    return responseEntity.getBody();
 	}
 //	getForObject
-	@RequestMapping("/book2")
+	@GetMapping("/book2")
 	public Test book2() {
 		Test test = restTemplate.getForObject("http://localhost:15021/test/hello",Test.class);
 	    return test;
 	}
 	
 //	postForEntity
-	@RequestMapping("/book3")
+	@GetMapping("/book3")
 	public Test book3() {
 		Test book = new Test();
 	    book.setName("红楼梦");
@@ -94,7 +96,7 @@ public class RestTemplateApi {
 	}
 	
 //	postForLocation
-	@RequestMapping("/book5")
+	@GetMapping("/book5")
 	public String book5() {
 		Test book = new Test();
 	    book.setName("红楼梦");

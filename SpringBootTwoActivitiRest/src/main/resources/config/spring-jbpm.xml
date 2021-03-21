@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="sessionFactoryJBPM" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.connection.url">${spring.datasource.url}</prop>
+                <prop key="hibernate.connection.username">${spring.datasource.username}</prop>
+                <prop key="hibernate.connection.password">${spring.datasource.password}</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+
+        <property name="mappingLocations">
+            <list>
+                <value>classpath*:jbpm.execution.hbm.xml</value>
+                <value>classpath*:jbpm.history.hbm.xml</value>
+                <value>classpath*:jbpm.identity.hbm.xml</value>
+                <value>classpath*:jbpm.repository.hbm.xml</value>
+                <value>classpath*:jbpm.task.hbm.xml</value>
+            </list>
+        </property>
+
+        <!-- 使用TransactionAwareDataSourceProxy管理事务与ibatis处于同一事务管理下 -->
+        <property name="useTransactionAwareDataSource" value="true"></property>
+
+    </bean>
+
+    <bean id="transactionManagerJBPM" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryJBPM"/>
+    </bean>
+
+    <!-- jbpm工作流 -->
+    <bean id="springHelper" class="org.jbpm.pvm.internal.processengine.SpringHelper">
+        <property name="jbpmCfg" value="jbpm.cfg.xml"></property>
+    </bean>
+
+    <bean id="processEngine" factory-bean="springHelper" factory-method="createProcessEngine">
+    </bean>
+
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+
+    <bean id="executionService" factory-bean="processEngine" factory-method="getExecutionService"/>
+
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
+
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
+
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+
+    <bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService"/>
+
+</beans>

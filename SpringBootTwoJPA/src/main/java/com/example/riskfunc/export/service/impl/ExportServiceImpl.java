@@ -1,4 +1,13 @@
-package com.example.service;
+package com.example.riskfunc.export.service.impl;
+
+import com.example.common.exception.customException.CustomException;
+import com.example.common.utils.WordUtils;
+import com.example.pojo.User;
+import com.example.riskfunc.export.service.facade.ExportService;
+import org.apache.commons.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,27 +17,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.example.common.utils.WordUtils;
-import com.example.pojo.User;
-
-@Service
+@Service(value="exportService")
 @Transactional
-public class ExportService {
+public class ExportServiceImpl implements ExportService {
 
 	@Value("${export.word.filePath}")
 	private String filePath;
 	
-	
 	public String exportWordFile() {
-		
+
 		Map<String, Object> dataMap = new HashMap<String, Object>();
-        
+
         try {
+
         	List<User> users=new ArrayList<User>();
         	for(int i=0;i<3;i++){
         		User user =new User();
@@ -37,7 +38,7 @@ public class ExportService {
         	}
         	String name="2";
         	dataMap.put("users", users);
-        	dataMap.put("image", getImageStr());
+//        	dataMap.put("image", getImageStr());
             dataMap.put("name", name);
             dataMap.put("sex", "男");
             // 生成word文件
@@ -48,6 +49,7 @@ public class ExportService {
         	
         }catch(Exception e) {
         	e.printStackTrace();
+            throw new CustomException("自定义的异常信息");
         }
         return filePath;
       }
