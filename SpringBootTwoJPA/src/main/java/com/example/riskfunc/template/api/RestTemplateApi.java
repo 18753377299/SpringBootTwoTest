@@ -1,4 +1,4 @@
-package com.example.api;
+package com.example.riskfunc.template.api;
 
 import java.io.IOException;
 import java.net.URI;
@@ -30,7 +30,7 @@ public class RestTemplateApi {
 	RestTemplate simpleRestTemplate;
 	@Autowired
 	RestTemplate restTemplate;
-	
+
 	/*HttpCilent：使用示例*/
 	@GetMapping("/testHttpClient")
     public Object getUser(String msg) throws IOException {

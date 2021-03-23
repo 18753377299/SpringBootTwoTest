@@ -17,7 +17,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 //@EnableAsync
 //@ComponentScan("org.activiti.rest")
-@ComponentScan("com.example.riskfunc")
+@ComponentScan({"com.example.riskfunc","com.example.common"})
 public class SpringBootTwoJpaApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootTwoJpaApplication.class, args);

@@ -1,7 +1,7 @@
 package com.example.test;
 
 import com.example.common.utils.SpringUtils;
-import com.example.service.ExportService;
+import com.example.riskfunc.export.service.facade.ExportService;
 import io.swagger.annotations.Api;
 import org.junit.Test;
 
@@ -14,5 +14,6 @@ public class SpringUtilsTest extends DemoTestSuper{
          ExportService exportService = SpringUtils.getBean("exportService");
          exportService.exportWordFile();
      }
+
 
 }

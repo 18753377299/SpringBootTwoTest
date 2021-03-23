@@ -2,11 +2,13 @@ package com.example.vo;
 
 import java.util.Map;
 
+import io.swagger.annotations.Api;
 import lombok.Data;
 
 
 
 @Data
+@Api("返回的vo类")
 public class AjaxResult<T> {
 	
 	private long status;
@@ -15,7 +17,8 @@ public class AjaxResult<T> {
 	private Map<String, Object> datas;
 	
 	private static int FAIl = -1;
-	
+
+
 	public AjaxResult(T data) {
 		if ((data instanceof Exception))    {
 		       status = -1L;

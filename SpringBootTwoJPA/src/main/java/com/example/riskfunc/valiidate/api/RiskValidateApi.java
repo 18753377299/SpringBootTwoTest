@@ -1,4 +1,4 @@
-package com.example.api;
+package com.example.riskfunc.valiidate.api;
 
 import com.example.common.exception.customException.CustomException;
 import com.example.common.valid.group.GroupA;
@@ -21,13 +21,13 @@ import javax.validation.constraints.Max;
 import javax.validation.groups.Default;
 import java.util.Set;
 
-/*该类用于进行字段校验测试*/
 
 @RestController
-//@Validated
-@RequestMapping(value=" riskvalidate")
-@Api(value="用于springboot请求类的参数校验")
+@Validated
+@RequestMapping(value="riskvalidate")
+@Api(value="用于springboot请求类的参数校验",tags = "该类用于进行字段校验测试")
 public class RiskValidateApi {
+
 	@Autowired
     private Validator validator;
 	
@@ -46,7 +46,7 @@ public class RiskValidateApi {
 	@GetMapping("/getUser")
 	@ApiOperation(value="使用get方式对字段进行校验",notes="addby liqiankun20200611 begin")
     public String getUserStr(@NotBlank(message = "name 不能为空") String name,
-   		 @Max(value = 99, message = "不能大于99岁") int age) {
+   		 @Max(value = 99, message = "age不能大于99岁") int age) {
 		Assert.isNull(name, "name 不能为空");
        return "name: " + name + " ,age:" + age;
     }

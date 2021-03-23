@@ -44,15 +44,14 @@ public class ExportServiceImpl implements ExportService {
             // 生成word文件
         	WordUtils.createWord(dataMap,"abc.ftl",filePath+"/wordTest.doc");
         	WordUtils.createZip(filePath+"/wordTest.zip",filePath+"/wordTest.doc",true);
-        	
-        	
-        	
+
         }catch(Exception e) {
         	e.printStackTrace();
             throw new CustomException("自定义的异常信息");
         }
         return filePath;
       }
+
         public  String getImageStr() {
 //          String imgFile = "C:/Users/lqk/Desktop/p2.jpg";
           String imgFile = "C:/Users/lqk/Desktop/aa.png";

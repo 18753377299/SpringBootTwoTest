@@ -58,6 +58,8 @@ public class RestTemplateInterceptor implements ClientHttpRequestInterceptor{
         log.info("Response body: {}", inputStringBuilder.toString());
         log.info("=======================response end=================================================");
     }
+
+
 	
 
 }
