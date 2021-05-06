@@ -1,33 +1,32 @@
-package com.example.service;
+package com.example.common.service.impl;
 
-import java.util.List;
-
+import com.example.common.jpa.vo.Criteria;
+import com.example.common.service.facade.TransactionServiceOne;
+import com.example.common.service.facade.TransactionServiceTwo;
+import com.example.pojo.Test;
+import com.example.riskfunc.test.dao.TestRepository;
+import io.swagger.annotations.ApiModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.common.jpa.vo.Criteria;
-import com.example.dao.TestRepository;
-import com.example.pojo.Test;
-
-import io.swagger.annotations.ApiModel;
+import java.util.List;
 
 @Service
 @Transactional
 @ApiModel(value="进行事务的测试：事务的传播行为："
 		+ "所谓事务的传播行为是指，如果在开始当前事务之前，一个事务上下文已经存在，此时有若干选项可以指定一个事务性方法的执行行为。")
-public class TransactionServiceOne {
+public class TransactionServiceOneImpl implements TransactionServiceOne {
 	
 	@Autowired
 	TestRepository testRepository;
 	
-	@Autowired 
-	TransactionServiceOne transactionServiceOne;
+	@Autowired
+	TransactionServiceOneImpl transactionServiceOne;
 	
-	@Autowired 
+	@Autowired
 	TransactionServiceTwo transactionServiceTwo;
 	
 	/** https://www.cnblogs.com/panchanggui/p/10882749.html

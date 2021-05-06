@@ -20,12 +20,12 @@ public class SimpleExpression implements Criterion{
     private Operator operator;      //计算符
     private Integer from;
     private Integer len;
-  
+
     protected SimpleExpression(String fieldName, Object value, Operator operator) {  
         this.fieldName = fieldName;  
         this.value = value;  
         this.operator = operator;  
-    } 
+    }
     public SimpleExpression(String fieldName, Operator operator) {
 		super();
 		this.fieldName = fieldName;
@@ -61,12 +61,12 @@ public class SimpleExpression implements Criterion{
     public Predicate toPredicate(Root<?> root, CriteriaQuery<?> query,  
             CriteriaBuilder builder) {  
         Path expression = null;  
-        if(fieldName.contains(".")){  
+        if(fieldName.contains(".")){
             String[] names = StringUtils.split(fieldName, ".");
             expression = root.get(names[0]);  
             for (int i = 1; i < names.length; i++) {  
                 expression = expression.get(names[i]);  
-            }  
+            }
         }else{  
             expression = root.get(fieldName);
         } 
@@ -96,7 +96,7 @@ public class SimpleExpression implements Criterion{
         case INTERCEPT: 
         	return builder.equal(builder.substring(expression, from, len), value);
         	 // 进行字段截取,不等于的时候
-        case NINTERCEPT: 
+        case NINTERCEPT:
         	return builder.notEqual(builder.substring(expression, from, len), value);
         case ISNOTNULL: 
         	return builder.isNotNull(expression);

@@ -2,10 +2,10 @@ package com.example.test;
 
 import com.example.SpringBootTwoJpaApplication;
 import com.example.dao.RiskInfoDiscussRepository;
-import com.example.dao.UsersRepository;
 import com.example.pojo.RiskInfoDiscuss;
 import com.example.pojo.Roles;
 import com.example.pojo.Users;
+import com.example.riskfunc.test.dao.UsersRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
@@ -28,6 +28,7 @@ public class OneToManyTest {
 	
 	@Autowired
 	private UsersRepository usersRepository;
+
 	@Autowired
 	private RiskInfoDiscussRepository riskInfoDiscussRepository;
 	

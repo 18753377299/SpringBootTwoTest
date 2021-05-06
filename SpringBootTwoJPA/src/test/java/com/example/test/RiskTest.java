@@ -4,6 +4,7 @@ package com.example.test;
 import com.example.SpringBootTwoJpaApplication;
 import com.example.common.jpa.condition.Restrictions;
 import com.example.common.jpa.vo.Criteria;
+import com.example.common.service.facade.SaaAPIService;
 import com.example.dao.RiskReportSaleMainRepository;
 import com.example.dao.RiskTestRepository;
 import com.example.dao.TestTwoKeyRepository;
@@ -20,6 +21,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -47,6 +49,9 @@ public class RiskTest {
 	
 	@Autowired
 	private DataSource dataSource;
+
+	@Autowired
+    SaaAPIService  saaAPIService;
 	
 	@Test
 	public void testJdbcTemplate() {
@@ -94,7 +99,11 @@ public class RiskTest {
        criteria.add(Restrictions.intercept("name", "w", 1, 1));
        String  password = null;
        criteria.add(Restrictions.eq("password",password));
-       
+       Specification specification  = saaAPIService.addPower("41270000");
+       if(null !=specification){
+         criteria.and(specification);
+       }
+
 //       Sort sort = null;
 //       Sort sort = new Sort(new Order(Direction.DESC,"id"));
 //       criteria.add(Restrictions.eq("id",1)).add(Restrictions.like("name","wan"));
@@ -108,8 +117,10 @@ public class RiskTest {
        Pageable pageable = null;
        Sort sort = new Sort(Direction.ASC, "id");
        pageable = new PageRequest(0, 2, sort);
+
        Page<TestTwo> pageTestTwo =  riskTestRepository.findAll(criteria, pageable);
        List<TestTwo> users = pageTestTwo.getContent();
+
        if(!users.isEmpty()) {
     	   System.out.println(users.get(0).getName());
        }
@@ -120,8 +131,7 @@ public class RiskTest {
        for(TestTwo testTwo:  users) {
     	   System.out.println(testTwo);
        }
-       
-    } 
+    }
     
     @Test
     @ApiOperation(value="对findOne单个查询进行测试")
@@ -170,8 +180,10 @@ public class RiskTest {
         for(TestTwoKey testTwoKey:  testTwokeyList) {
      	   System.out.println(testTwoKey);
         }
-        
+
     }
+
+
    
     
 }

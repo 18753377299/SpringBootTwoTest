@@ -1,22 +1,21 @@
-package com.example.service;
+package com.example.common.service.impl;
 
-import java.util.List;
-
+import com.example.common.jpa.vo.Criteria;
+import com.example.common.service.facade.TransactionServiceTwo;
+import com.example.pojo.Test;
+import com.example.riskfunc.test.dao.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.common.jpa.vo.Criteria;
-import com.example.dao.TestRepository;
-import com.example.pojo.Test;
+import java.util.List;
 
 
 @Service
 @Transactional
-public class TransactionServiceTwo {
+public class TransactionServiceTwoImpl implements TransactionServiceTwo {
 	
 	@Autowired
 	TestRepository testRepository;

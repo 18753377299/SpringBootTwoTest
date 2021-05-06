@@ -30,23 +30,6 @@ public class GlobalExceptionHandler {
 //	private final static Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
 
-	/*@ExceptionHandler(ValidationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handle(ValidationException exception) {
-		String errorMessage = "";
-        if(exception instanceof ConstraintViolationException){
-            ConstraintViolationException exs = (ConstraintViolationException) exception;
-
-            Set<ConstraintViolation<?>> violations = exs.getConstraintViolations();
-            for (ConstraintViolation<?> item : violations) {
-                //打印验证不通过的信息
-                System.out.println(item.getMessage());
-                errorMessage = item.getMessage();
-            }
-        }
-        return errorMessage;
-    }*/
-	
 	@ExceptionHandler
     public AjaxResult handler(HttpServletRequest req, HttpServletResponse res, Exception e) {
         log.info("Restful Http请求发生异常...");
@@ -104,5 +87,6 @@ public class GlobalExceptionHandler {
         }
         return AjaxResult.error(EnumExcepConst.ParamValidateConst.getName()+":"+ e.getMessage());
     }
+
 
 }

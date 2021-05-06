@@ -1,10 +1,10 @@
 package com.example.test;
 
 import com.example.SpringBootTwoJpaApplication;
-import com.example.dao.TestTwoRepository;
 import com.example.pojo.TestTwo;
 import com.example.pojo.TestTwoKey;
 import com.example.pojo.TestTwoKeyId;
+import com.example.riskfunc.test.dao.TestTwoRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

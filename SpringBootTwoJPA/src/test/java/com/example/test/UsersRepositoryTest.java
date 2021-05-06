@@ -1,17 +1,15 @@
 package com.example.test;
 
-import com.example.SpringBootTwoJpaApplication;
 import com.example.common.readconfig.UtiKeyProperties;
 import com.example.common.vo.UtiKey;
 import com.example.dao.*;
 import com.example.pojo.RiskReportSaleImaType;
 import com.example.pojo.RiskReportSaleMain;
 import com.example.pojo.Users;
-import com.example.service.TestService;
+import com.example.riskfunc.test.dao.UsersRepository;
+import com.example.riskfunc.test.service.impl.TestServiceImpl;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +18,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.criteria.*;
@@ -33,9 +30,7 @@ import java.util.Optional;
 /**
  * 测试类
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SpringBootTwoJpaApplication.class)
-public class UsersRepositoryTest {
+public class UsersRepositoryTest extends  DemoTestSuper{
 
 	@Autowired
 	private UsersRepository usersRepository;
@@ -56,7 +51,7 @@ public class UsersRepositoryTest {
 	private UsersRepositorySpecification usersRepositorySpecification;
 	
 	@Autowired
-	TestService testService;
+	TestServiceImpl testService;
 	
 	@Autowired
 	private  UtiKeyProperties utiKeyProperties;

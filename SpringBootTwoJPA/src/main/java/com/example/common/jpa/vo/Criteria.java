@@ -24,9 +24,9 @@ public class Criteria<T> implements Specification<T> {
             CriteriaBuilder builder) {  
         if (!criterions.isEmpty()) {  
             List<Predicate> predicates = new ArrayList<Predicate>();  
-            for(Criterion c : criterions){  
+            for(Criterion c : criterions){
                 predicates.add(c.toPredicate(root, query,builder));  
-            }  
+            }
             // 将所有条件用 and 联合起来 
             if (predicates.size() > 0) {  
                 return builder.and(predicates.toArray(new Predicate[predicates.size()]));  

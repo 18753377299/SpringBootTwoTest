@@ -18,22 +18,22 @@ public class LogicalExpression implements Criterion {
     public LogicalExpression(Criterion[] criterions, Operator operator) {  
         this.criterion = criterions;  
         this.operator = operator;  
-    }  
+    }
   
     public Predicate toPredicate(Root<?> root, CriteriaQuery<?> query,  
             CriteriaBuilder builder) {  
         List<Predicate> predicates = new ArrayList<Predicate>();  
         for(int i=0;i<this.criterion.length;i++){  
             predicates.add(this.criterion[i].toPredicate(root, query, builder));  
-        }  
+        }
         switch (operator) {  
-        case OR:  
+        case OR:
             return builder.or(predicates.toArray(new Predicate[predicates.size()])); 
         case AND:
             return builder.and(predicates.toArray(new Predicate[predicates.size()]));
         default: 
             return null;  
-        }  
+        }
     }
   
 }

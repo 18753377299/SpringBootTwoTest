@@ -1,26 +1,21 @@
-package com.example.api;
+package com.example.riskfunc.test.api;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.common.service.facade.TransactionServiceOne;
+import com.example.common.service.facade.TransactionServiceTwo;
+import com.example.pojo.User;
+import com.example.riskfunc.test.dao.UsersRepository;
+import com.example.riskfunc.test.service.facade.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.alibaba.fastjson.JSON;
-import com.example.dao.UsersRepository;
 import com.example.pojo.Test;
 import com.example.pojo.Users;
-import com.example.service.TestService;
-import com.example.service.TransactionServiceOne;
-import com.example.service.TransactionServiceTwo;
 import com.example.vo.AjaxResult;
 import com.example.vo.RiskRequestVo;
 
@@ -32,12 +27,16 @@ public class TestAPi {
 	
 	@Autowired
 	TestService testService;
+
 	@Autowired
 	UsersRepository usersRepository;
-	
+	/**测试,相同的url，不同的参数和请求类型会不会导致冲突--begin
+	 * 结果: 如果请求类型不同,可以有相同的url，
+	 *  如果请求类型相同，url相同，
+	 * */
 	// 查询
-	 @RequestMapping(value = "/hello",method = {RequestMethod.GET,RequestMethod.POST})
-     public AjaxResult<Test> say(){
+	 @PostMapping(value = "/hello")
+     public AjaxResult<Test> say(@RequestBody User user){
 		 Test  test = null;
 		 System.out.println("hello everyBody");
 		 List<Test> testList= testService.findAll();
@@ -46,6 +45,21 @@ public class TestAPi {
 		 }
          return AjaxResult.ok(test);
      }
+	/*@PostMapping(value = "/hello")
+	public AjaxResult<Test> sayParam(String riskFileNo){
+		Test  test = null;
+		System.out.println("===>"+riskFileNo);
+		return AjaxResult.ok(test);
+	}*/
+
+	@GetMapping(value = "/hello")
+	public AjaxResult<Test> sayOne(@RequestParam String riskFileNo){
+		Test  test = null;
+		System.out.println("===>"+riskFileNo);
+	 	return AjaxResult.ok(test);
+	}
+	/**测试,相同的url，不同的参数和请求类型会不会导致冲突--end*/
+
 	// 查询
 	 @RequestMapping(value = "/helloTwo",method = RequestMethod.GET)
      public String sayTwo(){
@@ -108,9 +122,9 @@ public class TestAPi {
          return users;
      }
 	 
-	 @Autowired 
+	 @Autowired
 	 TransactionServiceOne transactionServiceOne;
-	 @Autowired 
+	 @Autowired
 	 TransactionServiceTwo transactionServiceTwo;
 	 
 	 @GetMapping(value = "/testTransaction")

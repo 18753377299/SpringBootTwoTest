@@ -18,7 +18,7 @@ public class Restrictions {
     public static SimpleExpression eq(String fieldName, Object value) {  
         if(StringUtils.isEmpty(value))return null;
         return new SimpleExpression (fieldName, value, Criterion.Operator.EQ);
-    }  
+    }
       
     /** 
      * 不等于 

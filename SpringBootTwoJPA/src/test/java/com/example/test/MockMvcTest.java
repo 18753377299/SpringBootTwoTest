@@ -1,7 +1,7 @@
 package com.example.test;
 
 import com.example.SpringBootTwoJpaApplication;
-import com.example.api.TestAPi;
+import com.example.riskfunc.test.api.TestAPi;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
